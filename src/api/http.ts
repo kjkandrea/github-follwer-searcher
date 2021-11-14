@@ -1,5 +1,5 @@
 import { fromFetch } from 'rxjs/fetch';
-import { catchError, of, switchMap } from 'rxjs';
+import { catchError, of, switchMap, throwError } from 'rxjs';
 
 console.log(process.env);
 
@@ -10,7 +10,5 @@ export const request = (uri: string) =>
     },
   }).pipe(
     switchMap(response => (response.ok ? response.json() : of({ error: true, message: `Error ${response.status}` }))),
-    catchError(err => {
-      throw of({ error: true, message: err.message });
-    }),
+    catchError(err => throwError(err)),
   );

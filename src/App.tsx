@@ -11,8 +11,6 @@ import { BehaviorSubject } from 'rxjs';
 const DEFAULT_USER_NAME = '';
 const username$ = new BehaviorSubject(DEFAULT_USER_NAME);
 
-username$.subscribe(console.log);
-
 function App() {
   return (
     <SApp>

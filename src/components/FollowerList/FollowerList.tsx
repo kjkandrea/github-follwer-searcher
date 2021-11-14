@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import NoFollowers from './NoFollowers';
 
 import SFollowerList from '../../styles/components/FollowerList';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { request } from '../../api/http';
 
 interface FollowerListProps {
@@ -11,13 +11,16 @@ interface FollowerListProps {
 
 const FollowerList: React.FC<FollowerListProps> = ({ usernameSubject }) => {
   const [username, setUsername] = useState(usernameSubject.value);
+  const [followers, setFollowers] = useState([]);
 
   useEffect(() => {
     usernameSubject.subscribe(username => {
       if (!username) return;
-      request(`/users/${username}/followers`).subscribe({
-        next: console.log,
-      });
+      request(`/users/${username}/followers`)
+        .pipe(tap(console.log))
+        .subscribe({
+          next: () => {},
+        });
 
       setUsername(username);
     });

@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+import 'reset-css/reset.css';
+import './global.css';
 
 import UserSearch from './components/UserSearch';
 

@@ -1,14 +1,13 @@
 import React from 'react';
 
+import SUserSearch from '../styles/components/UserSearch';
+
 const UserSearch = () => {
   return (
-    <form>
-      <div>
-        <label htmlFor="username">username : </label>
-        <input id="username" type="text" />
-      </div>
+    <SUserSearch>
+      <input id="username" placeholder="username" type="text" />
       <button type="submit">submit</button>
-    </form>
+    </SUserSearch>
   );
 };
 

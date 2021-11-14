@@ -3,11 +3,15 @@ import './App.css';
 
 import UserSearch from './components/UserSearch';
 
+import SApp from './styles/App';
+
 function App() {
   return (
-    <div className="App">
-      <UserSearch />
-    </div>
+    <SApp>
+      <div className="App">
+        <UserSearch />
+      </div>
+    </SApp>
   );
 }
 

@@ -8,7 +8,7 @@ import FollowerList from './components/FollowerList/FollowerList';
 import SApp from './styles/App';
 import { BehaviorSubject } from 'rxjs';
 
-const DEFAULT_USER_NAME = '';
+const DEFAULT_USER_NAME = 'kjkandrea';
 const username$ = new BehaviorSubject(DEFAULT_USER_NAME);
 
 function App() {

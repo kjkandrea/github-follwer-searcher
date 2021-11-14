@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NoFollowers from './NoFollowers';
 
 import SFollowerList from '../../styles/components/FollowerList';
+import { BehaviorSubject } from 'rxjs';
 
 interface FollowerListProps {
-  searchUserName: string;
+  usernameSubject: BehaviorSubject<string>;
 }
 
-const FollowerList: React.FC<FollowerListProps> = ({ searchUserName }) => {
+const FollowerList: React.FC<FollowerListProps> = ({ usernameSubject }) => {
+  const [username, setUsername] = useState(usernameSubject.value);
+
+  useEffect(() => {
+    usernameSubject.subscribe(username => {
+      console.log(username);
+      setUsername(username);
+    });
+  }, []);
+
   return (
     <SFollowerList>
-      <NoFollowers searchUserName={searchUserName} />
+      <NoFollowers username={username} />
     </SFollowerList>
   );
 };
